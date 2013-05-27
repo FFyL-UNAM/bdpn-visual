@@ -1,0 +1,26 @@
+<form action="#/do" method="post">
+  <div class="btn-group pull-left">
+    <a href="" class="btn btn-small select-all">Seleccionar todas</a>
+    <a href="" class="btn btn-small deselect-all">Deseleccionar todas</a> 
+  </div>
+
+  <div class="pull-right">
+    <select style="margin: 0" name="visualization">
+      <option value="cloud">Tag Cloud</option>
+      <option value="bubble">Bubble Chart</option>
+      <option value="comparison">Comparison</option>
+    </select>
+    <input class="btn btn-primary" type="submit" value="Ver">
+  </div>
+
+  <div class="books">
+    {{#books}}
+    <div class="pull-left" style="width: 48%; padding: 0 1%;">
+        <label class="checkbox">
+          <input type="checkbox" name="books" value="{{value._id}}">
+            <strong>{{value.name}}</strong> <br> {{value.author}}
+        </label>
+    </div>
+    {{/books}}
+  </div>
+</form>

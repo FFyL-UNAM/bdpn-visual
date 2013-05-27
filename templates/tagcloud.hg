@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h3>Tag Cloud <small>de nombres</small></h3>
+</div>
+
+<div id="cloud-names"></div>
+
+<div class="page-header">
+  <h3>Tag Cloud <small>de términos</small></h3>
+</div>
+
+<div id="cloud-terms"></div>
