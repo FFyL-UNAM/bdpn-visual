@@ -16,7 +16,7 @@ define(['config', 'd3', 'd3_cloud'], function(config, d3){
       if (i < 100) return item;
     });
 
-    var fill   = d3.scale.category20()
+    var fill   = d3.scale.category10()
       , size   = d3.scale.linear()
                   .domain([0, d3.max(words, function(d){ return d.value; })])
                   .range([14, 100])
@@ -49,7 +49,7 @@ define(['config', 'd3', 'd3_cloud'], function(config, d3){
             .duration(2000)
             .style("opacity", 1);
       text.style("font-family", function(d) { return d.font; })
-          .style("fill", function(d) { return fill(d.text); })
+          .style("fill", function(d) { return fill(d.subterm); })
           .text(function(d) { return d.text; });
     }
     
@@ -64,15 +64,15 @@ define(['config', 'd3', 'd3_cloud'], function(config, d3){
         context.load(url, { dataType: 'jsonp' })
                 .then(function(docs){
 
-                  _( _.flatten(docs.name) ).each(function(items) {
+                  _( _.flatten(docs.name) ).each(function(items, group) {
                     _(items).each(function(value, key){
-                      names.push({ text: key, value: value });
+                      names.push({ text: key, value: value, subterm: group });
                     });
                   });
 
-                  _( _.flatten(docs.term) ).each(function(items) {
+                  _( _.flatten(docs.term) ).each(function(items, group) {
                     _(items).each(function(value, key){
-                      terms.push({ text: key, value: value });
+                      terms.push({ text: key, value: value, subterm: group });
                     });
                   });
 
