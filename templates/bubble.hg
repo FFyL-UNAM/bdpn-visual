@@ -1,0 +1,5 @@
+<div class="page-header">
+  <h3>Bubble Chart</h3>
+</div>
+
+<div id="bubble-names"></div>

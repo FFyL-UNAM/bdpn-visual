@@ -4,5 +4,4 @@
 
 ### Todo
 
-* Bubble Chart
 * Comparison Chart
