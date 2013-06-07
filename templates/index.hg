@@ -8,7 +8,7 @@
     <select style="margin: 0" name="visualization">
       <option value="cloud">Tag Cloud</option>
       <option value="bubble">Bubble Chart</option>
-      <option value="comparison">Comparison</option>
+      <option value="chord">Chords</option>
     </select>
     <input class="btn btn-success" type="submit" value="Ver">
   </div>

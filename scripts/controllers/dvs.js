@@ -1,4 +1,4 @@
-define(['config', 'lib/controllers', 'dvs/cloud', 'dvs/bubble'], function(config, Controller, cloud, bubble){
+define(['config', 'lib/controllers', 'dvs/cloud', 'dvs/bubble', 'dvs/chord'], function(config, Controller, cloud, bubble, chord){
 
   return function(app){
 
@@ -17,6 +17,9 @@ define(['config', 'lib/controllers', 'dvs/cloud', 'dvs/bubble'], function(config
       });
 
       switch(type) {
+        case 'chord':
+          chord(books, context);
+        break;
         case 'bubble':
           bubble(books, context);
         break;
