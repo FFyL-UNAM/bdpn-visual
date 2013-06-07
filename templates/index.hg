@@ -1,7 +1,7 @@
 <form action="#/do" method="post">
-  <div class="btn-group pull-left">
-    <a href="" class="btn btn-small select-all">Seleccionar todas</a>
-    <a href="" class="btn btn-small deselect-all">Deseleccionar todas</a> 
+  <div class="btn-group">
+    <a href="#" class="btn select-all">Seleccionar todas</a>
+    <a href="#" class="btn deselect-all">Deseleccionar todas</a> 
   </div>
 
   <div class="pull-right">
@@ -10,7 +10,7 @@
       <option value="bubble">Bubble Chart</option>
       <option value="comparison">Comparison</option>
     </select>
-    <input class="btn btn-primary" type="submit" value="Ver">
+    <input class="btn btn-success" type="submit" value="Ver">
   </div>
 
   <div class="books">
