@@ -5,7 +5,16 @@ define(['config', 'd3', 'tooltip'], function(config, d3){
 
     var diameter  = 767
       , fill      = d3.scale.category10()
-      , format    = d3.format(",d");
+      , format    = d3.format(",d")
+      , scale     = d3.scale.linear()
+                      .domain([0, d3.max( words.children, function(d){
+                        if(d.children) {
+                          return d3.max(d.children, function(d) { return d.value; });
+                        } else {
+                          return d.value;
+                        }
+                      })])
+                      .range([10, 22]);
 
     var pack = d3.layout.pack()
                   .size([diameter, diameter])
@@ -56,14 +65,15 @@ define(['config', 'd3', 'tooltip'], function(config, d3){
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
         .style("fill", "white")
-        .style("font-size", function(d){
-          return d.r / 2.5 < 10 ? 10 : d.r / 2.5;
-        })
-        .text(function(d) { return d.text.substring(0, d.r / 3); });
+        .style("font-size", function(d){ return scale(d.value); })
+        .text(function(d) {
+          return d.text.substring(0, d.r / 3);
+        });
 
     d3.select(self.frameElement).style("height", diameter + "px");
 
   }
+
 
   var bubble = function(books, context){
 
