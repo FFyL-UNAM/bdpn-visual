@@ -4,9 +4,10 @@ define(['config', 'd3', 'tooltip'], function(config, d3){
 
 
     var diameter  = 767
-      , fill      = d3.scale.category10();
+      , fill      = d3.scale.category10()
+      , format    = d3.format(",d");
 
-    var bubble = d3.layout.pack()
+    var pack = d3.layout.pack()
                   .size([diameter, diameter])
                   .padding(1.5);
 
@@ -15,35 +16,50 @@ define(['config', 'd3', 'tooltip'], function(config, d3){
                 .attr("height", diameter)
                 .attr("class", "bubble");
 
-    var node = svg.selectAll('g.node')
-                  .data(bubble.nodes(words)
-                    .filter(function(d){ return !d.children; }))
-                  .enter().append("svg:g")
-                  .attr("class", "node")
-                  .attr("title", "tooltip")
-                  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-                  .tooltip(function(d, i) {
-                    var r, svg;
-                    r = +d3.select(this).attr('r');
-                    svg = d3.select(document.createElement("svg")).attr("height", 50);
-                    g = svg.append("g");
-                    g.append("rect").attr("width", r * 10).attr("height", 10);
-                    g.append("text").text(d.text).attr("dy", "25");
-                    return {
-                      type: "tooltip",
-                      text: d.text,
-                      detection: "shape",
-                      placement: "fixed",
-                      gravity: "right",
-                      position: [d.x, d.y],
-                      displacement: [r + 2, -20],
-                      mousemove: true
-                    };
-                  });
+    var node = svg.datum(words)
+                  .selectAll('.node')
+                  .data(pack.nodes)
+                    .enter().append('g')
+                      .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+                      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-    var circle = node.append('circle')
-                      .attr("r", function(d){ return d.r; })
-                      .style("fill", function(d) { return fill(d.subterm); })
+    node.tooltip(function(d, i) {
+      var tooltip = {};
+      if (d.text) {
+        var r, svg;
+        r = +d3.select(this).attr('r');
+        svg = d3.select(document.createElement("svg")).attr("height", 50);
+        g = svg.append("g");
+        g.append("rect").attr("width", r * 10).attr("height", 10);
+        g.append("text").text(d.text).attr("dy", "25");
+
+        tooltip = {
+          type: "tooltip",
+          text: d.text + ": " + format(d.value) + " ocurrencias",
+          detection: "shape",
+          placement: "fixed",
+          gravity: "right",
+          position: [d.x, d.y],
+          displacement: [r + 2, -20],
+          mousemove: false
+        };
+      }
+
+      return tooltip;
+    });
+
+    node.append('circle')
+        .attr("r", function(d){ return d.r; })
+        .style("fill", function(d) { return fill(d.subterm); });
+
+    node.filter(function(d) { return !d.children; }).append("text")
+        .attr("dy", ".3em")
+        .style("text-anchor", "middle")
+        .style("fill", "white")
+        .style("font-size", function(d){
+          return d.r / 2.5 < 10 ? 10 : d.r / 2.5;
+        })
+        .text(function(d) { return d.text.substring(0, d.r / 3); });
 
     d3.select(self.frameElement).style("height", diameter + "px");
 
