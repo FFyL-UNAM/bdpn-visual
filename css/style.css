@@ -10,6 +10,11 @@ body {
   height: auto !important;
   height: 100%;
 }
+.logo img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
 .progress {
   margin: 0 auto;
   width: 300px;
