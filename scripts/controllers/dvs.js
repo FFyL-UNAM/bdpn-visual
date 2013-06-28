@@ -13,7 +13,7 @@ define(['config', 'lib/controllers', 'dvs/cloud', 'dvs/bubble', 'dvs/chord'], fu
       }
 
       books.forEach(function(bookId, i){
-        books[i] = config.bdpn.host + '/api/' + bookId + '/tags';
+        books[i] = bookId;
       });
 
       switch(type) {

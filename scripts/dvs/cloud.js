@@ -60,7 +60,10 @@ define(['config', 'd3', 'd3_cloud'], function(config, d3){
       var names = []
         , terms = [];
       
-      _(books).each(function(url, i){
+      _(books).each(function(id, i){
+
+        var url = config.bdpn.host + '/api/' + id + '/tags';
+        
         context.load(url, { dataType: 'jsonp' })
                 .then(function(docs){
 
