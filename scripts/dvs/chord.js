@@ -39,8 +39,6 @@ define(['config', 'd3'], function(config, d3){
     // set layout chord
     var layout = d3.layout.chord()
                     .padding(.1)
-                    .sortGroups(d3.descending)
-                    .sortSubgroups(d3.ascending)
                     .sortChords(d3.ascending)
                     .matrix(new_matrix);
 
@@ -185,7 +183,7 @@ define(['config', 'd3'], function(config, d3){
         });
 
         if(even){
-          c.target = even.target;
+          c.target = even.source;
         }
 
       });
@@ -220,8 +218,6 @@ define(['config', 'd3'], function(config, d3){
       context.load(url, { dataType: 'jsonp' })
               .then(function(doc){
 
-                groups.push(doc.book.name);
-
                 var sublabels = []
                   , submatrix = [];
 
@@ -249,6 +245,8 @@ define(['config', 'd3'], function(config, d3){
                             submatrix.push(item.value);
                           });
                           
+
+                          groups.push(doc.book.name);
 
                           labels.push(sublabels);
                           matrix.push(submatrix);
