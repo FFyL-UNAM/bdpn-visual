@@ -42,6 +42,12 @@ body {
   clear: both;
 }
 
+.chord {
+  stroke: #333;
+  stroke-width: .75;
+  fill-opacity: .90;
+}
+
 /* Push & Footer */
 #push { padding-bottom: 20px; }
 #footer { background-color: #333; }
