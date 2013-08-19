@@ -26,6 +26,7 @@ define(['config', 'd3'], function(config, d3){
       new_matrix.push(submatrix);
     }
 
+
     // set options
     var diameter    = 767
       , innerRadius = 0.42 * Math.min(diameter, diameter)

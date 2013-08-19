@@ -1,0 +1,12 @@
+{
+  "name": "bdpn-visual",
+  "version": "0.1.0",
+  "dependencies": {
+    "components-bootstrap": "2.3.2",
+    "jquery": "~2.0.3",
+    "underscore": "~1.5.1",
+    "sammy": "~0.7.4",
+    "hogan": "~3.0.0",
+    "d3": "~3.2.8"
+  }
+}

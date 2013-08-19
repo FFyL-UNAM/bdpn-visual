@@ -1,11 +1,11 @@
 requirejs.config({
     paths: {
-        'jquery'      : 'http://code.jquery.com/jquery-latest.min'
-      , 'underscore'  : 'http://underscorejs.org/underscore-min'
-      , 'sammy'       : 'https://raw.github.com/quirkey/sammy/master/lib/sammy'
+        'jquery'      : '../bower_components/jquery/jquery.min'
+      , 'underscore'  : '../bower_components/underscore/underscore-min'
+      , 'sammy'       : '../bower_components/sammy/lib/min/sammy-latest.min'
       , 'sammy_hogan' : 'https://raw.github.com/quirkey/sammy/master/lib/plugins/sammy.hogan'
-      , 'hogan'       : 'http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0'
-      , 'd3'          : 'http://d3js.org/d3.v3.min'
+      , 'hogan'       : '../bower_components/hogan/web/1.0.0/hogan.min'
+      , 'd3'          : '../bower_components/d3/d3.min'
       , 'd3_cloud'    : 'https://raw.github.com/jasondavies/d3-cloud/master/d3.layout.cloud'
     }
   , shim: {
