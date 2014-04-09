@@ -95,8 +95,8 @@ define(['config', 'd3', 'tooltip'], function(config, d3){
 
                     _(items).each(function(value, key){
                       names.children[group]['children'] = names.children[group]['children'] || [];
-                      names.children[group]['children'].push({ text: key, value: value, subterm: group });
-                      names.children[group].value = names.children[group].value + value;
+                      names.children[group]['children'].push({ text: key, value: value.count, subterm: group });
+                      names.children[group].value = names.children[group].value + value.count;
                     });
 
                     names.children[group]['children'].sort(function(a, b) {

@@ -243,7 +243,7 @@ define(['config', 'd3'], function(config, d3){
 
                           _(name).each(function(item){
                             sublabels.push(item.name);
-                            submatrix.push(item.value);
+                            submatrix.push(item.value.count);
                           });
                           
 

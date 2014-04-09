@@ -69,13 +69,13 @@ define(['config', 'd3', 'd3_cloud'], function(config, d3){
 
                   _( _.flatten(docs.name) ).each(function(items, group) {
                     _(items).each(function(value, key){
-                      names.push({ text: key, value: value, subterm: group });
+                      names.push({ text: key, value: value.count, subterm: group });
                     });
                   });
 
                   _( _.flatten(docs.term) ).each(function(items, group) {
                     _(items).each(function(value, key){
-                      terms.push({ text: key, value: value, subterm: group });
+                      terms.push({ text: key, value: value.count, subterm: group });
                     });
                   });
 
