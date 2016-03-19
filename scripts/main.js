@@ -3,7 +3,7 @@ requirejs.config({
         'jquery'      : '../bower_components/jquery/jquery.min'
       , 'underscore'  : '../bower_components/underscore/underscore-min'
       , 'sammy'       : '../bower_components/sammy/lib/min/sammy-latest.min'
-      , 'sammy_hogan' : 'https://raw.github.com/quirkey/sammy/master/lib/plugins/sammy.hogan'
+      , 'sammy_hogan' : 'https://rawgit.com/quirkey/sammy/master/lib/plugins/sammy.hogan'
       , 'hogan'       : '../bower_components/hogan/web/1.0.0/hogan.min'
       , 'd3'          : '../bower_components/d3/d3.min'
       , 'd3_cloud'    : 'd3.layout.cloud'
